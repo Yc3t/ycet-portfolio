@@ -1,0 +1,80 @@
+.detailItem {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 12px;
+    margin-top: 12px;  /* Add margin-top to balance the spacing */
+  }
+  
+  .detailItem::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 6px;
+    height: 6px;
+    background-color: white;
+    border-radius: 50%;
+    transform: translateY(-50%);
+  }
+  
+
+  
+  .glowingChevron {
+    transition: all 0.3s ease;
+  }
+  
+  .glowingChevron.active {
+    color: #60a5fa;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: .5;
+    }
+  }
+
+/* ... existing styles ... */
+
+.projectTrigger {
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.projectTrigger:hover {
+  color: #ffffff;
+}
+
+.separator {
+  flex-grow: 1;
+  height: 1px;
+  background-color: #ccc1c1;
+  margin: 0 4px; /* Reduced from 10px to 4px */
+  max-width: 20px; /* Limits the length of the separator line */
+}
+
+.githubLink {
+  display: flex;
+  align-items: center;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+  margin-left: 2px; /* Added a small left margin */
+}
+
+.projectTrigger:hover .githubLink {
+  opacity: 1;
+}
+
+.glowingChevron {
+  transition: all 0.3s ease;
+  margin-right: 8px; /* Reduced from default to 8px */
+}
+
+.glowingChevron.active {
+  color: #61dafb;
+  text-shadow: 0 0 5px #61dafb;
+}
