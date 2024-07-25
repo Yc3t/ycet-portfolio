@@ -5,7 +5,7 @@ import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@/component
 import styles from './a1.module.css'
 import NavigationBar from '@/components/navbar';
 import RadialGraph from '@/components/graph';
-
+import SocialLine from '@/components/SocialLine';
 const GitHubButton = ({ url }) => (
   <a
     href={url}
@@ -35,22 +35,17 @@ const Home = () => {
       [projectId]: !prev[projectId]
     }));
   };
-
   return (
-    <>
-      <NavigationBar/>
-      <div className='text-2xl flex'>
-        <div className="bg-black text-white p-8 font-hack flex-1">
+    <div className="flex flex-col min-h-screen bg-black">
+      <NavigationBar />
+      <div className="flex-grow flex overflow-hidden">
+        <div className="bg-black text-white p-8 font-hack flex-1 overflow-y-auto">
           <section className="mb-8">
             <h2 className="text-4xl mb-4">about</h2>
             <div className="ml-4">
               <p className="flex items-center">
                 <ChevronRight className="mr-2" size={20} />
                 <span className={styles.typingEffect}>{data.about.role}</span>
-              </p>
-              <p className="flex items-center mt-2 text-sm text-gray-400">
-                <ChevronRight className="mr-2" size={20} />
-                {data.about.description}
               </p>
             </div>
           </section>
@@ -66,8 +61,8 @@ const Home = () => {
             </div>
           </section>
           
-          <section>
-          <h2 className="text-4xl mb-4">projects</h2>
+          <section className="mb-16">
+            <h2 className="text-4xl mb-4">projects</h2>
             <div className="ml-4">
               {data.projects.map(project => (
                 <Collapsible 
@@ -95,9 +90,9 @@ const Home = () => {
                       <Github size={18} />
                     </a>
                   </CollapsibleTrigger>
-                  <CollapsibleContent>
-                    <p className="ml-8 mt-2 text-sm text-gray-400">{project.description}</p>
-                    <ul className="ml-8 list-none relative mt-2">
+                  <CollapsibleContent className={styles.projectContent}>
+                    <p className="mt-2 text-sm text-gray-400">{project.description}</p>
+                    <ul className="list-none relative mt-2">
                       {project.details.map((detail, index) => (
                         <li key={index} className={`${styles.detailItem} text-sm`}>{detail}</li>
                       ))}
@@ -108,12 +103,12 @@ const Home = () => {
             </div>
           </section>
         </div>
-        <div className="flex-1 flex items-center justify-center bg-black">
-          <RadialGraph/>
+        <div className="flex items-center justify-center bg-black">
+          <RadialGraph />
         </div>
       </div>
-    </>
+      <SocialLine />
+    </div>
   );
 };
-
 export default Home;

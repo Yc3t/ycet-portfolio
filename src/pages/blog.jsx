@@ -4,10 +4,11 @@ import { ChevronRight, Tag, Bookmark } from 'lucide-react';
 import NavigationBar from '@/components/navbar';
 import RadialGraph from '@/components/graph';
 import styles from './blog.module.css';
-import '@/app/globals.css'  // Adjust this path if necessary
+import '@/app/globals.css'
+import SocialLine from '@/components/SocialLine';
 
 const BlogEntry = ({ title, tags, onClick }) => (
-  <div 
+  <div
     className={`w-full p-4 mb-4 border border-gray-700 rounded-lg cursor-pointer hover:bg-gray-900 transition-colors ${styles.projectTrigger}`}
     onClick={onClick}
   >
@@ -39,15 +40,15 @@ const Blog = () => {
   useEffect(() => {
     // In a real application, you'd fetch blog data here
     setEntries([
-      { 
-        id: 1, 
-        title: "The Art of Minimalism in Web Design", 
+      {
+        id: 1,
+        title: "The Art of Minimalism in Web Design",
         tags: ["Design", "Web", "UX"],
         url: "/blog/minimalism-in-web-design"
       },
-      { 
-        id: 2, 
-        title: "Implementing RadialGraph with React", 
+      {
+        id: 2,
+        title: "Implementing RadialGraph with React",
         tags: ["React", "D3", "Visualization"],
         url: "/blog/radial-graph-react"
       },
@@ -66,26 +67,32 @@ const Blog = () => {
   };
 
   return (
-    <>
+    <div className="flex flex-col min-h-screen bg-black">
       <NavigationBar />
-      <div className='text-xl flex'>
-        <div className="bg-black text-white p-8 font-hack flex-1 overflow-y-auto" style={{ maxHeight: 'calc(100vh - 64px)' }}>
+      <div className="flex-grow flex relative">
+        <div className="bg-black text-white p-8 font-hack flex-1 overflow-y-auto">
           <h1 className="text-4xl mb-8">blog</h1>
-          {entries.map(entry => (
-            <BlogEntry 
-              key={entry.id} 
-              title={entry.title} 
-              tags={entry.tags}
-              onClick={() => handleEntryClick(entry.url)}
-            />
-          ))}
+          <div className="mb-16">
+            {entries.map(entry => (
+              <BlogEntry
+                key={entry.id}
+                title={entry.title}
+                tags={entry.tags}
+                onClick={() => handleEntryClick(entry.url)}
+              />
+            ))}
+          </div>
         </div>
-        <div className="flex-1 flex items-center justify-center bg-black">
+        <div className="flex items-center justify-center bg-black p-4">
           <RadialGraph />
         </div>
       </div>
-    </>
+      <div className="absolute bottom-0 left-0 right-0">
+        <SocialLine />
+      </div>
+    </div>
   );
 };
+
 
 export default Blog;

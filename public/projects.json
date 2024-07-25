@@ -1,8 +1,7 @@
 {
     "about": {
-      "role": "Telematic Engineer",
-      "description": "Passionate about creating innovative solutions at the intersection of telecommunications and computer science."
-    },
+      "role": "Telematic Engineer"
+        },
     "skills": [
       "Python", "JavaScript", "React", "Node.js", "IoT", "Network Protocols", "Data Analysis", "Machine Learning"
     ],

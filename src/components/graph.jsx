@@ -10,17 +10,19 @@ const RadialGraph = () => {
     linkHighlightBehavior: true,
     directed: false,
     d3: {
-      gravity: -300,
-      linkLength: 100,
+      gravity: -200,
+      linkLength: 50,
     },
     node: {
       color: "#999",
-      size: 300,
+      size: 150,
       highlightStrokeColor: "blue",
     },
     link: {
       highlightColor: "lightblue",
     },
+    height: 400,
+    width: 400,
   };
 
   // Graph data
@@ -58,7 +60,6 @@ const RadialGraph = () => {
         onMouseOverLink={onMouseOverLink}
         onMouseOutLink={onMouseOutLink}
       />
-
     </div>
   );
 };

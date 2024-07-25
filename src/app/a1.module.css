@@ -78,3 +78,65 @@
   color: #61dafb;
   text-shadow: 0 0 5px #61dafb;
 }
+/* ... other styles remain the same ... */
+
+.projectTrigger {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    text-align: left;
+    padding: 0.5rem 0;
+  }
+  
+  .glowingChevron {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin-right: 0.5rem;
+    transition: all 0.3s ease;
+  }
+  
+  .projectTrigger:hover .glowingChevron {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+  
+  .separator {
+    flex-grow: 1;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 0 10px;
+  }
+  
+  .githubLink {
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+  }
+  
+  .githubLink:hover {
+    opacity: 1;
+  }
+  
+  .projectContent {
+    padding-left: 2rem; /* Aligns content with the project title */
+  }
+  
+  .detailItem {
+    position: relative;
+    padding-left: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .detailItem::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    width: 4px;
+    height: 4px;
+    background-color: white;
+    border-radius: 50%;
+  }
