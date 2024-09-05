@@ -1,43 +1,31 @@
 {
-    "about": {
-      "role": "Telematic Engineer"
-        },
-    "skills": [
-      "Python", "JavaScript", "React", "Node.js", "IoT", "Network Protocols", "Data Analysis", "Machine Learning"
-    ],
-    "projects": [
-      {
-        "id": "project-a",
-        "name": "Project A",
-        "description": "An IoT-based smart traffic management system",
-        "details": [
-          "Implemented machine learning algorithms for traffic prediction",
-          "Developed user interface with React",
-          "Integrated with RESTful APIs for real-time data processing"
-        ],
-        "githubUrl": "https://github.com/yourusername/project-a"
-      },
-      {
-        "id": "project-b",
-        "name": "Project B",
-        "description": "Secure communication protocol for autonomous vehicles",
-        "details": [
-          "Designed a lightweight encryption algorithm",
-          "Optimized for low-latency communication",
-          "Implemented proof-of-concept using Python and MQTT"
-        ],
-        "githubUrl": "https://github.com/yourusername/project-b"
-      },
-      {
-        "id": "project-c",
-        "name": "Project C",
-        "description": "Telemetry data visualization platform",
-        "details": [
-          "Developed scalable backend using Node.js",
-          "Created interactive dashboards with D3.js",
-          "Implemented real-time data streaming with WebSockets"
-        ],
-        "githubUrl": "https://github.com/yourusername/project-c"
-      }
-    ]
-  }
+  "about": {
+    "role": "Telematic Engineer"
+  },
+  "skills": [
+    "Python", "JavaScript", "React", "Node.js", "IoT", "Network Protocols", "Data Analysis", "Machine Learning"
+  ],
+  "projects": [
+    {
+      "id": "project-a",
+      "name": "Smart Traffic Management",
+      "imageUrl": "/images/image.jpeg",
+      "technologies": ["C++","CSS3","React", "PHP"],
+      "githubUrl": "https://github.com/yourusername/project-a"
+    },
+    {
+      "id": "project-b",
+      "name": "Secure Vehicle Communication",
+      "imageUrl": "/images/image.jpeg",
+      "technologies": ["Python", "MATLAB", "PyTorch","C#"],
+      "githubUrl": "https://github.com/yourusername/project-b"
+    },
+    {
+      "id": "project-c",
+      "name": "Telemetry Visualization",
+      "imageUrl": "/images/image.jpeg",
+      "technologies": ["Node.js", "JavaScript", "Next.js", "React"],
+      "githubUrl": "https://github.com/yourusername/project-c"
+    }
+  ]
+}

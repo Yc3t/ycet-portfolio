@@ -1,26 +1,72 @@
 "use client"
 import React, { useState, useEffect } from 'react';
-import { ChevronRight, ChevronDown, Github } from 'lucide-react';
-import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@/components/ui/collapsible';
 import styles from './a1.module.css'
+import { Github, Code, Database, Globe, Server, Cpu, Shield, Radio } from 'lucide-react';
 import NavigationBar from '@/components/navbar';
 import RadialGraph from '@/components/graph';
 import SocialLine from '@/components/SocialLine';
-const GitHubButton = ({ url }) => (
-  <a
-    href={url}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="inline-flex items-center px-4 py-2 mt-4 text-sm font-medium text-white bg-gray-800 border border-gray-600 rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-colors duration-200"
-  >
-    <Github size={16} className="mr-2" />
-    View on GitHub
-  </a>
+import Image from 'next/image';
+
+
+const techIconMap = {
+  'C++': '/logos/cplusplus.svg',
+  'C#': '/logos/csharp.svg',
+  'CSS3': '/logos/css3.svg',
+  'HTML5': '/logos/html5.svg',
+  'JavaScript': '/logos/javascript.svg',
+  'MATLAB': '/logos/matlab.svg',
+  'Next.js': '/logos/nextjs.svg',
+  'Node.js': '/logos/nodejs.svg',
+  'PHP': '/logos/php.svg',
+  'Python': '/logos/python.svg',
+  'PyTorch': '/logos/pytorch.svg',
+  'React': '/logos/react.svg'
+};
+const ProjectCard = ({ project }) => (
+  <div className="relative overflow-hidden group h-full">
+    <div className="absolute inset-0 bg-gradient-to-r from-neutral-800/40 to-gray-500/30 blur-md"></div>
+    <div className="border border-stroke-light bg-neutral-800/40 backdrop-blur-sm flex flex-col p-0 rounded-xl"> 
+      <h3 className="text-sm font-bold mb-2 mt-2 text-gray-200 text-center">{project.name}</h3>
+      <div className="aspect-video relative mb-0 overflow-hidden rounded-lg">
+        <Image
+          src={project.imageUrl}
+          alt={project.name}
+          layout="fill"
+          objectFit="cover"
+          className="rounded-md transition-transform duration-300 group-hover:scale-110"
+        />
+      </div>
+      <div className="absolute flex w-full flex-row items-center justify-center bottom-0 left-0 right-0 bg-surface-300/80 px-4 py-2.5 backdrop-blur-sm border-none font-mono text-xs text-content-light,md:text-sm rounded-lg" >
+        <div className="flex gap-2">
+          {project.technologies.map((tech, index) => {
+            const iconSrc = techIconMap[tech];
+
+            return iconSrc ? (
+              <div key={index} className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center overflow-hidden">
+                <Image
+                  src={iconSrc}
+                  alt={tech}
+                  width={20}
+                  height={20}
+                  className="w-5 h-5 text-gray-300"
+                />
+              </div>
+            ) : (
+              <div key={index} className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center">
+                <Code className="w-5 h-5 text-gray-300" />
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  </div>
 );
+
+
 
 const Home = () => {
   const [data, setData] = useState({ about: {}, skills: [], projects: [] });
-  const [openProjects, setOpenProjects] = useState({});
 
   useEffect(() => {
     fetch('/projects.json')
@@ -29,27 +75,21 @@ const Home = () => {
       .catch(error => console.error('Error loading data:', error));
   }, []);
 
-  const toggleProject = (projectId) => {
-    setOpenProjects(prev => ({
-      ...prev,
-      [projectId]: !prev[projectId]
-    }));
-  };
+
   return (
     <div className="flex flex-col min-h-screen bg-black">
       <NavigationBar />
-      <div className="flex-grow flex overflow-hidden">
+      <div className="flex-grow flex overflow-hidden flex-wrap">
         <div className="bg-black text-white p-8 font-hack flex-1 overflow-y-auto">
           <section className="mb-8">
             <h2 className="text-4xl mb-4">about</h2>
             <div className="ml-4">
               <p className="flex items-center">
-                <ChevronRight className="mr-2" size={20} />
                 <span className={styles.typingEffect}>{data.about.role}</span>
               </p>
             </div>
           </section>
-          
+ 
           <section className="mb-8">
             <h2 className="text-4xl mb-4">skills</h2>
             <div className="ml-4 flex flex-wrap">
@@ -60,55 +100,23 @@ const Home = () => {
               ))}
             </div>
           </section>
-          
+        
+
           <section className="mb-16">
             <h2 className="text-4xl mb-4">projects</h2>
-            <div className="ml-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {data.projects.map(project => (
-                <Collapsible 
-                  key={project.id}
-                  open={openProjects[project.id]}
-                  onOpenChange={() => toggleProject(project.id)}
-                >
-                  <CollapsibleTrigger className={`flex items-center w-full text-left mt-2 group ${styles.projectTrigger}`}>
-                    <div className={`${styles.glowingChevron} ${openProjects[project.id] ? styles.active : ''}`}>
-                      {openProjects[project.id] ? (
-                        <ChevronDown size={18} />
-                      ) : (
-                        <ChevronRight size={18} />
-                      )}
-                    </div>
-                    <span>{project.name}</span>
-                    <span className={styles.separator}></span>
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      className={styles.githubLink}
-                    >
-                      <Github size={18} />
-                    </a>
-                  </CollapsibleTrigger>
-                  <CollapsibleContent className={styles.projectContent}>
-                    <p className="mt-2 text-sm text-gray-400">{project.description}</p>
-                    <ul className="list-none relative mt-2">
-                      {project.details.map((detail, index) => (
-                        <li key={index} className={`${styles.detailItem} text-sm`}>{detail}</li>
-                      ))}
-                    </ul>
-                  </CollapsibleContent>
-                </Collapsible>
+                <ProjectCard key={project.id} project={project} />
               ))}
             </div>
           </section>
         </div>
         <div className="flex items-center justify-center bg-black">
-          <RadialGraph />
         </div>
       </div>
       <SocialLine />
     </div>
   );
 };
+
 export default Home;
