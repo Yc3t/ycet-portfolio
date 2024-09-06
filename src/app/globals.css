@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import react-resizable styles */
+@import 'react-resizable/css/styles.css';
+
+
+
 @layer base {
   :root {
     --background: 0 0% 0%;

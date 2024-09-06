@@ -15,6 +15,10 @@ module.exports = {
       screens: {
         "2xl": "1400px",
       },
+      boxShadow: {
+        'feature-card': '0 -1px 3px 0 rgb(0 0 0 / 0.05)',
+        'feature-card-dark': '0 0 0 1px rgb(255 255 255 / 0.06), 0 -1px rgb(255 255 255 / 0.1)'
+      },
     },
     extend: {
       colors: {
@@ -66,10 +70,20 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        'marquee-left': {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(-100%)' },
+        },
+        'marquee-up': {
+          '0%': { transform: 'translateY(100%)' },
+          '100%': { transform: 'translateY(-100%)' },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        'marquee-left': 'marquee-left var(--duration, 30s) linear infinite',
+        'marquee-up': 'marquee-up var(--duration, 30s) linear infinite'
       },
       fontFamily: {
         'hack': ['Hack Nerd Font', 'monospace'],
