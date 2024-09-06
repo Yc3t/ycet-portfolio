@@ -4,7 +4,7 @@ import { MapPin } from 'lucide-react'
 const AboutSection = () => {
   return (
     <section className="mb-8">
-      <h1 className="text-5xl font-bold mb-2">Hello! I'm ycet</h1>
+      <h1 className="text-5xl font-bold mb-2">Hello! I&apos;m ycet</h1>
       <div className="flex items-center mb-4">
         <h2 className="text-3xl font-semibold text-purple-400 mr-4">Telematic Engineer</h2>
         <div className="flex items-center bg-gray-800 rounded-full px-3 py-1">
