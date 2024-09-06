@@ -20,7 +20,6 @@ import {
   SiReact,
   SiTailwindcss,
   SiTypescript,
-  SiVisualstudiocode,
   SiVite
 } from '@icons-pack/react-simple-icons'
 import { ZapIcon } from 'lucide-react'
@@ -58,7 +57,6 @@ const StacksCard = () => {
         <Icon IconComponent={SiFirebase} className='size-10' />
         <Icon IconComponent={SiGit} className='size-10' />
         <Icon IconComponent={SiVite} className='size-10' />
-        <Icon IconComponent={SiVisualstudiocode} className='size-10' />
         <Icon IconComponent={SiCloudflare} className='size-10' />
         <Icon IconComponent={SiMarkdown} className='size-10' />
         <Icon IconComponent={SiJest} className='size-10' />
