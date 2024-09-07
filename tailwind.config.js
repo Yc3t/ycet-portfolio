@@ -86,7 +86,9 @@ module.exports = {
         'marquee-up': 'marquee-up var(--duration, 30s) linear infinite'
       },
       fontFamily: {
-        'hack': ['Hack Nerd Font', 'monospace'],
+        sans: ['"Geist Sans"', 'sans-serif'],
+        mono: ['"Geist Mono"', 'monospace'],
+        title: ['"Geist Title"', 'sans-serif'],
       },
     },
   },

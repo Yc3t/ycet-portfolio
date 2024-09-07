@@ -9,7 +9,7 @@ import Image from 'next/image';
 import LocationCard from '@/components/LocationCard';
 import StackCards from '@/components/StackCards';
 import { motion, useInView } from 'framer-motion';
-import Sidebar from '@/components/Sidebar'
+import Navbar from '@/components/navbar'
 import AboutSection from '@/components/AboutSection'
 const techIconMap = {
   'C++': '/logos/cplusplus.svg',
@@ -76,10 +76,9 @@ const ProjectCard = ({ project }) => (
 );
 
 
-
 const Home = () => {
   const [data, setData] = useState({ skills: [], projects: [] })
-  const [sidebarWidth, setSidebarWidth] = useState(256)
+  const cardStyle = "shadow-[0_4px_10px_rgba(138,43,226,0.2)] border border-purple-300/20 rounded-xl p-4 lg:p-6";
 
   useEffect(() => {
     fetch('/projects.json')
@@ -89,71 +88,55 @@ const Home = () => {
   }, [])
 
   return (
-
-    <div className="flex h-screen bg-black text-white font-hack">
-      <Sidebar onResize={(width) => setSidebarWidth(width)} />
-      <main className="flex-1 flex flex-col overflow-hidden" style={{ marginLeft: `${sidebarWidth}px` }}>
-        <div className="flex-grow overflow-y-auto p-4">
-
-
- <div className="ml-10 mb-4">
-
-          <AboutSection />
+    <div className="min-h-screen bg-black text-white">
+      <Navbar />
+      <main className="container mx-auto px-4 pt-4">
+        <AboutSection />
+        <section className="mb-10">
+          <h2 className="text-3xl mb-4 text-center font-bold">Skills</h2>
+          <div className="flex flex-wrap justify-center">
+            {data.skills.map((skill, index) => (
+              <span key={index} className="mr-2 mb-2 px-2 py-1 bg-gray-800 rounded-md text-sm">
+                {skill}
+              </span>
+            ))}
           </div>
-          <section className="mb-8">
-            <h2 className="text-4xl mb-4 ml-10 text-center">skills</h2>
-            <div className="ml-10 flex flex-wrap ">
-              {data.skills.map((skill, index) => (
-                <span key={index} className="mr-2 mb-2 px-2 py-1 bg-gray-800 rounded-md text-sm">
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </section>
-        
-          <section className="mb-16">
-            <h2 className="text-4xl mb-4 text-center">selected projects</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {data.projects.map(project => (
-                <ProjectCard key={project.id} project={project} />
-              ))}
-            </div>
-          </section>
-          <h2 className="text-4xl mb-4 text-center">about</h2>
+        </section>
+      
+        <section className="mb-10">
+          <h2 className="text-3xl mb-4 text-center font-bold">Selected Projects</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {data.projects.map(project => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </div>
+        </section>
 
+        <section className="mb-10">
+          <h2 className="text-3xl mb-4 text-center font-bold">About</h2>
           <motion.div
-            className="mt-12 grid gap-4 md:grid-cols-2"
-            initial={{
-              y: 40,
-              opacity: 0
-            }}
-            animate={{
-              y: 0,
-              opacity: 1
-            }}
-            transition={{
-              duration: 0.3
-            }}
+            className="grid gap-4 md:grid-cols-2"
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.3 }}
           >
-            <div className="shadow-feature-card dark:shadow-feature-card-dark flex flex-col gap-6 rounded-xl p-4 lg:p-6 border-2 border-gray-700">
-              <div className="grid gap-4">
-                <RadialGraph/>
-              </div>
+            <div className={`${cardStyle} flex flex-col gap-4`}>
+              <RadialGraph/>
             </div>
             <div className="grid gap-4">
-              <div className="shadow-feature-card dark:shadow-feature-card-dark flex flex-col gap-2 rounded-xl p-4 lg:p-6 border-2 border-gray-700">
+              <div className={`${cardStyle} flex flex-col gap-2`}>
                 <LocationCard />
               </div>
-              <div className="shadow-feature-card dark:shadow-feature-card-dark rounded-xl border-2 border-gray-700 overflow-hidden">
+              <div className={`${cardStyle} overflow-hidden`}>
                 <StackCards/>
               </div>
             </div>
           </motion.div>
-        </div>
-        <SocialLine />
+        </section>
       </main>
+      <SocialLine />
     </div>
-  )
-}
+  );
+};
 
 export default Home

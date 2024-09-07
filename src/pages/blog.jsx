@@ -71,7 +71,7 @@ const Blog = () => {
       <NavigationBar />
       <div className="flex-grow flex relative">
         <div className="bg-black text-white p-8 font-hack flex-1 overflow-y-auto">
-          <h1 className="text-4xl mb-8">blog</h1>
+          <h1 className="text-4xl mb-8 font-bold text-center">Blog</h1>
           <div className="mb-16">
             {entries.map(entry => (
               <BlogEntry
@@ -83,7 +83,9 @@ const Blog = () => {
             ))}
           </div>
         </div>
-        <div className="flex items-center justify-center bg-black p-4">
+        <div className="flex-column items-center justify-center bg-black p-2">
+          <h2 className="text-4xl mb-8 font-bold text-center">Blog</h2>
+
           <RadialGraph />
         </div>
       </div>

@@ -1,9 +1,7 @@
-"use client"
-
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { Code } from 'lucide-react'
-import Sidebar from '@/components/Sidebar'
+import Navbar from '@/components/navbar'  // Import the Navbar component
 import '@/app/globals.css'
 
 const techIconMap = {
@@ -71,9 +69,7 @@ const ProjectCard = ({ project }) => (
 )
 
 const ProjectsPage = () => {
-
   const [projects, setProjects] = useState([])
-  const [sidebarWidth, setSidebarWidth] = useState(256)
 
   useEffect(() => {
     fetch('/projects.json')
@@ -83,11 +79,11 @@ const ProjectsPage = () => {
   }, [])
 
   return (
-    <div className="flex h-screen bg-black text-white font-hack">
-      <Sidebar onResize={(width) => setSidebarWidth(width)} />
-      <main className="flex-1 flex flex-col overflow-hidden" style={{ marginLeft: `${sidebarWidth}px` }}>
-        <div className="flex-grow overflow-y-auto p-4">
-          <h1 className="text-4xl mb-8">Projects</h1>
+    <div className="flex flex-col min-h-screen bg-black text-white font-hack">
+      <Navbar />
+      <main className="flex-1 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <h1 className="text-4xl mb-8 text-center font-bold">Projects</h1>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projects.map(project => (
               <ProjectCard key={project.id} project={project} />
@@ -98,4 +94,5 @@ const ProjectsPage = () => {
     </div>
   )
 }
+
 export default ProjectsPage
