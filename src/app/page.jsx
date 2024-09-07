@@ -93,7 +93,7 @@ const Home = () => {
       <main className="container mx-auto px-4 pt-4">
         <AboutSection />
         <section className="mb-10">
-          <h2 className="text-3xl mb-4 text-center font-bold">Skills</h2>
+          <h2 className="text-4xl mb-4 text-center font-bold">Skills</h2>
           <div className="flex flex-wrap justify-center">
             {data.skills.map((skill, index) => (
               <span key={index} className="mr-2 mb-2 px-2 py-1 bg-gray-800 rounded-md text-sm">
@@ -104,7 +104,7 @@ const Home = () => {
         </section>
       
         <section className="mb-10">
-          <h2 className="text-3xl mb-4 text-center font-bold">Selected Projects</h2>
+          <h2 className="text-4xl mb-4 text-center font-bold">Selected Projects</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {data.projects.map(project => (
               <ProjectCard key={project.id} project={project} />
