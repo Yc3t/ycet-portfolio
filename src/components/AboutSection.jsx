@@ -18,7 +18,7 @@ const AboutSection = () => {
           </div>
         </div>
         <p className="text-gray-300 max-w-2xl mx-auto leading-relaxed mb-6">
-      ..... 
+          Testing...
         </p>
         <a 
           href="#contact" 
