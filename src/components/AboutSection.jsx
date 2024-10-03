@@ -6,7 +6,7 @@ const AboutSection = () => {
     <section className="flex flex-col items-center justify-center py-0 text-center px-4 mb-10">
       <div className="max-w-3xl mx-auto">
         <h1 className="text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
-          Hello! I&apos;m ycet
+          Hello! I&apos;m Youssef
         </h1>
         <div className="flex flex-col sm:flex-row items-center justify-center mb-4">
           <h2 className="text-2xl font-semibold text-purple-400 mb-2 sm:mb-0 sm:mr-4">
@@ -18,9 +18,7 @@ const AboutSection = () => {
           </div>
         </div>
         <p className="text-gray-300 max-w-2xl mx-auto leading-relaxed mb-6">
-          Product designer and design system specialist with over 9 years of experience
-          focusing on user experience and design systems to create user-centered designs
-          in SaaS products.
+      ..... 
         </p>
         <a 
           href="#contact" 
